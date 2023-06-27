@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://217ie2p052d4"]
+
+[ext_resource type="PackedScene" uid="uid://bb1lcnu11qnsq" path="res://elements/battery.tscn" id="1_vmq6o"]
+[ext_resource type="PackedScene" uid="uid://c22wynjjms80l" path="res://elements/charger.tscn" id="2_h4crk"]
+[ext_resource type="PackedScene" uid="uid://b2vx8hsbk5qk5" path="res://elements/discharger.tscn" id="3_dmcla"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rf6t3"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Battery" parent="." instance=ExtResource("1_vmq6o")]
+position = Vector2(156, 172)
+freeze_mode = 1
+debug = true
+
+[node name="Charger" parent="." instance=ExtResource("2_h4crk")]
+position = Vector2(515, 556)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(608, 573)
+shape = SubResource("WorldBoundaryShape2D_rf6t3")
+
+[node name="Charger2" parent="." instance=ExtResource("3_dmcla")]
+position = Vector2(794, 555)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb1lcnu11qnsq"]
+
+[ext_resource type="Script" path="res://elements/battery.gd" id="1_0a6by"]
+[ext_resource type="Texture2D" uid="uid://0qpwlvcj6qpb" path="res://icon.svg" id="2_pgaa0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22sn5"]
+size = Vector2(128, 128)
+
+[sub_resource type="Gradient" id="Gradient_ms8yq"]
+colors = PackedColorArray(0.682353, 0, 0, 1, 0.14767, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k0lkv"]
+gradient = SubResource("Gradient_ms8yq")
+
+[node name="Battery" type="RigidBody2D"]
+script = ExtResource("1_0a6by")
+capacity = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_22sn5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("2_pgaa0")
+
+[node name="FillMeter" type="Sprite2D" parent="."]
+z_index = 10
+scale = Vector2(0.296875, 20)
+texture = SubResource("GradientTexture1D_k0lkv")
