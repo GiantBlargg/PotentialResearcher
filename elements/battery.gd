@@ -9,6 +9,8 @@ var discharging: bool
 var fill_meter: Sprite2D
 var fill_width: float
 
+var anim: AnimationPlayer
+
 func set_charging(v:bool):
 	charging = v
 	
@@ -19,6 +21,9 @@ func set_discharging(v:bool):
 func _ready():
 	fill_meter = get_node("FillMeter")
 	fill_width = fill_meter.scale.x
+	anim = get_node("AnimationPlayer")
+	anim.set_current_animation("Charging")
+	anim.pause()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta:float):
@@ -32,7 +37,7 @@ func _physics_process(delta:float):
 	if value <= 0:
 		value = 0
 		
-	fill_meter.scale.x = fill_width * (value/capacity)
+	anim.seek(value/capacity, true)
 		
 		
 @export var debug: bool = false
