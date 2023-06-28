@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyv0dbowjgxxe"]
+[gd_scene load_steps=11 format=3 uid="uid://dyv0dbowjgxxe"]
 
 [ext_resource type="Texture2D" uid="uid://c1sw6b36qfueu" path="res://Scientist/Practice_Character.png" id="1_2j8cp"]
 [ext_resource type="Script" path="res://Scientist/platformer_controller.gd" id="1_lxtvq"]
@@ -1297,7 +1297,11 @@ _data = {
 radius = 97.0
 height = 516.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qaf8"]
+size = Vector2(519, 519)
+
 [node name="Scientist" type="CharacterBody2D"]
+position = Vector2(-2, 2)
 collision_layer = 4
 script = ExtResource("1_lxtvq")
 input_left = "Left"
@@ -1407,6 +1411,7 @@ bone_angle = -90.811
 [node name="r_arm" type="Bone2D" parent="Skeleton2D/hip/chest"]
 position = Vector2(-76, -57)
 rotation = -0.325922
+scale = Vector2(1, 1)
 rest = Transform2D(0.947356, -0.320182, 0.320182, 0.947356, -76, -57)
 
 [node name="r_hand" type="Bone2D" parent="Skeleton2D/hip/chest/r_arm"]
@@ -1423,6 +1428,7 @@ rest = Transform2D(0.989004, 0.147892, -0.147892, 0.989004, 34, -63)
 
 [node name="l_hand" type="Bone2D" parent="Skeleton2D/hip/chest/L_arm"]
 position = Vector2(31, 66)
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 31, 66)
 auto_calculate_length_and_angle = false
 length = 62.081
@@ -1459,3 +1465,13 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_nfssi")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("RectangleShape2D_2qaf8")
+
+[node name="CarryPoint" type="Node2D" parent="."]
+position = Vector2(11, -269)

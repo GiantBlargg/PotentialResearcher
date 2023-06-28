@@ -16,6 +16,8 @@ signal hit_ground()
 ## Name of input action to jump.
 @export var input_jump : String = "jump"
 
+@export var input_pick_up : String = "Pick Up"
+
 
 const DEFAULT_MAX_JUMP_HEIGHT = 150
 const DEFAULT_MIN_JUMP_HEIGHT = 60
@@ -108,6 +110,10 @@ var _was_on_ground: bool
 
 var acc = Vector2()
 
+var pickupArea: Area2D
+var carrying: RigidBody2D
+var carryPoint: Node2D
+
 # coyote_time and jump_buffer must be above zero to work. Otherwise, godot will throw an error.
 @onready var is_coyote_time_enabled = coyote_time > 0
 @onready var is_jump_buffer_enabled = jump_buffer > 0
@@ -134,6 +140,9 @@ func _ready():
 		jump_buffer_timer.wait_time = jump_buffer
 		jump_buffer_timer.one_shot = true
 
+	pickupArea = get_node("PickupArea")
+	carryPoint = get_node("CarryPoint")
+
 
 func _input(_event):
 	acc.x = 0
@@ -152,6 +161,16 @@ func _input(_event):
 	if Input.is_action_just_released(input_jump):
 		holding_jump = false
 
+	if Input.is_action_just_pressed(input_pick_up):
+		if (carrying == null):
+			for i in pickupArea.get_overlapping_bodies():
+				if i.has_method("carry"):
+					carrying = i
+					carrying.carry(carryPoint)
+		else:
+			carrying.carry(null)
+			carrying = null
+			
 
 func _physics_process(delta):
 	if is_coyote_timer_running() or current_jump_type == JumpType.NONE:

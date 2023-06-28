@@ -33,23 +33,15 @@ func _physics_process(delta:float):
 		value = 0
 		
 	anim.seek(value/capacity, true)
-		
-		
-@export var debug: bool = false
-var reposition: bool = false
-var new_pos:Vector2
+	
 
-func _input(event):
-	if debug:
-		if event.get_class() == "InputEventMouseButton":
-			if event.button_index == MOUSE_BUTTON_LEFT:
-				if event.pressed:
-					reposition = true
-					new_pos = event.position
-					set_sleeping(false)
+var carrier:Node2D = null
+
+func carry(_c:Node2D):
+	carrier = _c
+	set_sleeping(false)
 
 func _integrate_forces(state):
-	if reposition:
-		reposition = false
-		state.transform.origin = new_pos
+	if carrier:
+		state.transform = carrier.global_transform
 		state.linear_velocity = Vector2(0,0)

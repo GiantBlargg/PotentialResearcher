@@ -12,7 +12,7 @@ resource_name = "Charging"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FillMeter:position")
+tracks/0/path = NodePath("Sprite2D/FillMeter:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FillMeter:scale")
+tracks/1/path = NodePath("Sprite2D/FillMeter:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,7 +39,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FillMeter:position")
+tracks/0/path = NodePath("Sprite2D/FillMeter:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +51,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FillMeter:scale")
+tracks/1/path = NodePath("Sprite2D/FillMeter:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -74,14 +74,15 @@ script = ExtResource("1_0a6by")
 capacity = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 10.5)
+position = Vector2(0, -102)
 shape = SubResource("RectangleShape2D_22sn5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
+position = Vector2(0.5, -112.5)
 texture = ExtResource("2_gvppn")
 
-[node name="FillMeter" type="Sprite2D" parent="."]
+[node name="FillMeter" type="Sprite2D" parent="Sprite2D"]
 z_index = 10
 position = Vector2(0, 31)
 texture = ExtResource("3_w0qmh")
