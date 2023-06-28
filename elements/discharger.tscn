@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2vx8hsbk5qk5"]
 
-[ext_resource type="Texture2D" uid="uid://0qpwlvcj6qpb" path="res://icon.svg" id="1_3sxy7"]
+[ext_resource type="Texture2D" uid="uid://c471k8rktrwbt" path="res://elements/Discharger.png" id="1_synrb"]
 [ext_resource type="Script" path="res://elements/charger.gd" id="2_yt3lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vkc1"]
@@ -12,9 +12,9 @@ size = Vector2(180, 29)
 [node name="Discharger" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.35525e-20, -7)
-scale = Vector2(1.40625, 0.34375)
-texture = ExtResource("1_3sxy7")
+position = Vector2(0, -122)
+rotation = 3.14159
+texture = ExtResource("1_synrb")
 flip_v = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

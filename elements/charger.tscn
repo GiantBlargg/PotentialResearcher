@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c22wynjjms80l"]
 
-[ext_resource type="Texture2D" uid="uid://0qpwlvcj6qpb" path="res://icon.svg" id="1_fwl8a"]
+[ext_resource type="Texture2D" uid="uid://3sxo6f4xn0tx" path="res://elements/Charger.png" id="1_lp33e"]
 [ext_resource type="Script" path="res://elements/charger.gd" id="2_430uu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vkc1"]
@@ -12,9 +12,8 @@ size = Vector2(180, 29)
 [node name="Charger" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.35525e-20, -7)
-scale = Vector2(1.40625, 0.34375)
-texture = ExtResource("1_fwl8a")
+position = Vector2(0, -144)
+texture = ExtResource("1_lp33e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
