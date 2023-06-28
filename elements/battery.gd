@@ -6,9 +6,6 @@ var value: float
 var charging: bool
 var discharging: bool
 
-var fill_meter: Sprite2D
-var fill_width: float
-
 var anim: AnimationPlayer
 
 func set_charging(v:bool):
@@ -19,8 +16,6 @@ func set_discharging(v:bool):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	fill_meter = get_node("FillMeter")
-	fill_width = fill_meter.scale.x
 	anim = get_node("AnimationPlayer")
 	anim.set_current_animation("Charging")
 	anim.pause()
