@@ -24,3 +24,6 @@ shape = SubResource("WorldBoundaryShape2D_rf6t3")
 
 [node name="Charger2" parent="." instance=ExtResource("3_dmcla")]
 position = Vector2(794, 555)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
