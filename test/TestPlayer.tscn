@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dauipn2ykva3e"]
+[gd_scene load_steps=13 format=3 uid="uid://dauipn2ykva3e"]
 
 [ext_resource type="Texture2D" uid="uid://dgarrs5ysckuj" path="res://test/tilesheet_complete.png" id="1_pe053"]
 [ext_resource type="PackedScene" uid="uid://bb1lcnu11qnsq" path="res://elements/battery.tscn" id="2_mifvd"]
 [ext_resource type="PackedScene" uid="uid://dyv0dbowjgxxe" path="res://Scientist.tscn" id="3_6h8r0"]
 [ext_resource type="PackedScene" uid="uid://c22wynjjms80l" path="res://elements/charger.tscn" id="4_j5lbo"]
 [ext_resource type="PackedScene" uid="uid://b2vx8hsbk5qk5" path="res://elements/discharger.tscn" id="5_rb7pu"]
+[ext_resource type="Texture2D" uid="uid://0qpwlvcj6qpb" path="res://icon.svg" id="6_o83ce"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i8hle"]
 resource_name = "terrain"
@@ -948,6 +949,46 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_i8hle")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa2eb"]
+size = Vector2(128, 2048)
+
+[sub_resource type="Animation" id="Animation_82s8i"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3100, -389), Vector2(3100, -2261)]
+}
+
+[sub_resource type="Animation" id="Animation_v7va0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3100, -389)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v83ap"]
+_data = {
+"Open": SubResource("Animation_82s8i"),
+"RESET": SubResource("Animation_v7va0")
+}
+
 [node name="TestPlayer" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -974,3 +1015,22 @@ zoom = Vector2(0.2, 0.2)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3100, -389)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, -7.62939e-05)
+scale = Vector2(1, 16)
+texture = ExtResource("6_o83ce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_pa2eb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_v83ap")
+}
+
+[connection signal="send_power" from="Discharger" to="StaticBody2D/AnimationPlayer" method="play" binds= ["Open"]]
+[connection signal="stop_power" from="Discharger" to="StaticBody2D/AnimationPlayer" method="play_backwards" binds= ["Open"]]

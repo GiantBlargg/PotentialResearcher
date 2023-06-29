@@ -1298,7 +1298,7 @@ radius = 97.0
 height = 516.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qaf8"]
-size = Vector2(519, 519)
+size = Vector2(700, 700)
 
 [node name="Scientist" type="CharacterBody2D"]
 position = Vector2(-2, 2)

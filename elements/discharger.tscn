@@ -1,24 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2vx8hsbk5qk5"]
 
+[ext_resource type="Script" path="res://elements/discharger.gd" id="1_qef1x"]
 [ext_resource type="Texture2D" uid="uid://c471k8rktrwbt" path="res://elements/Discharger.png" id="1_synrb"]
-[ext_resource type="Script" path="res://elements/charger.gd" id="2_yt3lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pn304"]
 size = Vector2(189, 222)
 
 [node name="Discharger" type="Node2D"]
+script = ExtResource("1_qef1x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_synrb")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
-script = ExtResource("2_yt3lp")
-function = "set_discharging"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 19)
 shape = SubResource("RectangleShape2D_pn304")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
