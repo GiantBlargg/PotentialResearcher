@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwv86ntc6wrwt"]
+
+[ext_resource type="Texture2D" uid="uid://uf2ty2lb3ewe" path="res://elements/button_up.png" id="1_8086p"]
+[ext_resource type="Texture2D" uid="uid://d0313trruxbe7" path="res://elements/button_pushed.png" id="2_1n8pj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button_up" type="Sprite2D" parent="."]
+texture = ExtResource("1_8086p")
+
+[node name="button_down" type="Sprite2D" parent="."]
+position = Vector2(256, 8)
+texture = ExtResource("2_1n8pj")
