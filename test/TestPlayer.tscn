@@ -961,10 +961,10 @@ layer_0/tile_data = PackedInt32Array(262152, 0, 0, 196616, 0, 0, 131080, 0, 0, 2
 position = Vector2(1379, 499)
 
 [node name="Charger" parent="." instance=ExtResource("4_j5lbo")]
-position = Vector2(-2132, -614)
+position = Vector2(-2130, -767)
 
 [node name="Discharger" parent="." instance=ExtResource("5_rb7pu")]
-position = Vector2(2588, 631)
+position = Vector2(2586, 504)
 
 [node name="Scientist" parent="." instance=ExtResource("3_6h8r0")]
 position = Vector2(-525, -214)

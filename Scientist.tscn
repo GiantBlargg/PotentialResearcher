@@ -1311,6 +1311,7 @@ max_jump_height = 2000.0
 min_jump_height = 300.0
 jump_duration = 0.5
 max_acceleration = 50000
+friction = 30
 metadata/_edit_horizontal_guides_ = [-361.0]
 
 [node name="Polygons" type="Node2D" parent="."]
