@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Carriable
 
 @export var charging_time: float = 1
 @export var discharging_time: float = 1
@@ -7,7 +7,7 @@ extends RigidBody2D
 var charging: bool
 var discharging: Discharger
 
-var empty:bool
+var empty: bool
 
 var anim: AnimationPlayer
 
@@ -47,14 +47,3 @@ func _physics_process(delta:float):
 		
 	anim.seek(value/discharging_time, true)
 	
-
-var carrier:Node2D = null
-
-func carry(_c:Node2D):
-	carrier = _c
-	set_sleeping(false)
-
-func _integrate_forces(state):
-	if carrier:
-		state.transform = carrier.global_transform
-		state.linear_velocity = Vector2(0,0)
