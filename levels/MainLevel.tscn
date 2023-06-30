@@ -56,7 +56,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 5, 7),
@@ -155,3 +155,5 @@ position = Vector2(20196, -4228)
 
 [connection signal="send_power" from="Discharger" to="StaticBody2D/AnimationPlayer" method="play" binds= ["Move"]]
 [connection signal="stop_power" from="Discharger" to="StaticBody2D/AnimationPlayer" method="play_backwards" binds= ["Move"]]
+[connection signal="send_power" from="Discharger2" to="StaticBody2D2/AnimationPlayer" method="play" binds= ["Platform2"]]
+[connection signal="stop_power" from="Discharger2" to="StaticBody2D2/AnimationPlayer" method="play_backwards" binds= ["Platform2"]]
