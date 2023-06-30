@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://lpgqybc7mckx"]
+[gd_scene load_steps=15 format=3 uid="uid://lpgqybc7mckx"]
 
 [ext_resource type="TileSet" uid="uid://bvxpc8ed4hirx" path="res://elements/Tilemap.tres" id="1_glqea"]
 [ext_resource type="PackedScene" uid="uid://dyv0dbowjgxxe" path="res://Scientist.tscn" id="2_6u7x3"]
 [ext_resource type="PackedScene" uid="uid://bb1lcnu11qnsq" path="res://elements/battery.tscn" id="3_y7cye"]
 [ext_resource type="PackedScene" uid="uid://c22wynjjms80l" path="res://elements/charger.tscn" id="4_hy8fg"]
 [ext_resource type="PackedScene" uid="uid://b2vx8hsbk5qk5" path="res://elements/discharger.tscn" id="5_gq1j4"]
+[ext_resource type="Texture2D" uid="uid://kxowplkf7w0s" path="res://elements/Contatulation.png" id="6_r3d2e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bqu2"]
 size = Vector2(1024, 256)
@@ -152,6 +153,11 @@ position = Vector2(7210, -153)
 
 [node name="Discharger2" parent="." instance=ExtResource("5_gq1j4")]
 position = Vector2(20196, -4228)
+
+[node name="Contatulation" type="Sprite2D" parent="."]
+position = Vector2(24472, -8121)
+scale = Vector2(6, 6)
+texture = ExtResource("6_r3d2e")
 
 [connection signal="send_power" from="Discharger" to="StaticBody2D/AnimationPlayer" method="play" binds= ["Move"]]
 [connection signal="stop_power" from="Discharger" to="StaticBody2D/AnimationPlayer" method="play_backwards" binds= ["Move"]]
