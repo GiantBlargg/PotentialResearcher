@@ -1,4 +1,4 @@
-extends Node2D
+extends Carriable
 
 class_name Discharger
 

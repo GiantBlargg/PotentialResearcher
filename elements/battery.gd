@@ -43,6 +43,8 @@ func _physics_process(delta:float):
 			discharging.stop_power.emit()
 		empty = true
 	else:
+		if empty && discharging != null:
+			discharging.send_power.emit()
 		empty = false
 		
 	anim.seek(value/discharging_time, true)

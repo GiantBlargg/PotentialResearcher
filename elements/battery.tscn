@@ -69,7 +69,6 @@ _data = {
 
 [node name="Battery" type="RigidBody2D"]
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_0a6by")
 discharging_time = 5.0
 

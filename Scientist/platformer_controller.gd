@@ -169,6 +169,7 @@ func _physics_process(delta):
 				if i.has_method("carry"):
 					carrying = i
 					carrying.carry(carryPoint)
+					break
 		else:
 			carrying.carry(null)
 			carrying = null
