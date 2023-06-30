@@ -161,6 +161,8 @@ func _input(_event):
 	if Input.is_action_just_released(input_jump):
 		holding_jump = false
 
+
+func _physics_process(delta):
 	if Input.is_action_just_pressed(input_pick_up):
 		if (carrying == null):
 			for i in pickupArea.get_overlapping_bodies():
@@ -170,9 +172,8 @@ func _input(_event):
 		else:
 			carrying.carry(null)
 			carrying = null
-			
-
-func _physics_process(delta):
+	
+	
 	if is_coyote_timer_running() or current_jump_type == JumpType.NONE:
 		jumps_left = max_jump_amount
 	if is_feet_on_ground() and current_jump_type == JumpType.NONE:

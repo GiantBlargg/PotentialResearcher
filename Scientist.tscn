@@ -1315,6 +1315,7 @@ friction = 30
 metadata/_edit_horizontal_guides_ = [-361.0]
 
 [node name="Polygons" type="Node2D" parent="."]
+z_index = 5
 position = Vector2(14, 50)
 
 [node name="L_arm" type="Polygon2D" parent="Polygons"]
