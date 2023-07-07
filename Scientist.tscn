@@ -1304,14 +1304,6 @@ size = Vector2(700, 700)
 position = Vector2(-2, 2)
 collision_layer = 4
 script = ExtResource("1_lxtvq")
-input_left = "Left"
-input_right = "Right"
-input_jump = "Jump"
-max_jump_height = 2000.0
-min_jump_height = 300.0
-jump_duration = 0.5
-max_acceleration = 50000
-friction = 30
 metadata/_edit_horizontal_guides_ = [-361.0]
 
 [node name="Polygons" type="Node2D" parent="."]
