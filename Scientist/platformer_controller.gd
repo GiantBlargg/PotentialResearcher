@@ -16,6 +16,8 @@ var max_hor_accel: float;
 var carrying: Carriable
 @onready var pickupArea = get_node("PickupArea")
 @onready var carryPoint = get_node("CarryPoint")
+@onready var anim = get_node("Sprite/Skeleton2D/AnimationPlayer")
+@onready var sprite = get_node("Sprite")
 
 func _ready():
 	config_physics()
@@ -39,6 +41,22 @@ func _physics_process(delta):
 	var target_speed = direction * max_speed;
 	var hor_accel = max_hor_accel * delta
 	velocity.x += clamp(target_speed - velocity.x, -hor_accel, hor_accel)
+	
+	if abs(direction) > 0 and is_on_floor():
+		if carrying:
+			anim.play("carry_walk")
+		else:
+			anim.play("walk")
+	else:
+		if carrying:
+			anim.play("carry")
+		else:
+			anim.play("rest")
+			
+	if direction > 0:
+		sprite.scale.x = 1
+	if direction < 0:
+		sprite.scale.x = -1
 	
 	if Input.is_action_just_pressed("Pick Up"):
 		if (carrying == null):
